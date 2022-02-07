@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css和style绑定</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+
+    <div id="app">
+        <!-- 第一种方案 -->
+        <!-- <div style="font-size: 20px; color: red;" v-bind:style="{color:activeColor}"> -->
+        <!-- 第二种方案 -->
+        <!-- <div style="font-size: 20px; color: red;" v-bind:style="styleObject"> -->
+        <!-- 第三种方案 -->
+        <!-- <div style="font-size: 20px; color: red;" v-bind:style="[styleObject]"> -->
+        <div style="font-size: 20px; color: red;" v-bind:style="styleObject">
+            {{ message }}
+        </div>
+        
+
+    </div>
+
+    
+    <script>
+
+
+        // 去掉警告
+        Vue.config.productionTip = false
+
+        // 数据对象
+        const dataObj = {
+            message : 'Hello, Vue!',
+            // 第一种方案
+            // activeColor:'blue',
+            // 第二种方案
+            // styleObject : {
+            //     color : 'blue',
+            // }
+            // 第三种方案
+            // styleObject : {
+            //     color : 'blue',
+            //     fontSize : '30px',
+            // }
+        };
+
+    
+        // 创建一个Vue对象
+        const app = new Vue({
+            // el固定属性，挂载指定元素
+            // id #   class .
+            el : '#app',
+            // data 固定属性，定义数据
+            // 数据中的属性名和模板变量名一致
+            data :dataObj,
+            
+            // 计算属性，固定名称
+            computed : {
+              styleObject() {
+                  return {
+                      color : 'blue',
+                      fontSize : '30px',
+                  }
+              }
+            },
+
+            // 方法
+            methods : {
+               
+            },
+        });
+    </script>
+</body>
+</html>
