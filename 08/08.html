@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组检测和key</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+
+    <div id="app">
+
+        
+        <ul>
+            <button v-on:click="add">添加</button>
+            <li v-for="item in array" v-bind:key="item.id"><input type="checkbox">{{ item.city }}</li>
+        </ul>
+    </div>
+
+    
+    <script>
+
+
+        // 去掉警告
+        Vue.config.productionTip = false
+
+        // 数据对象
+        const dataObj = {
+            message : 'Hello, Vue!',
+            flag:false,
+            array : [
+                {
+                    id : 1,
+                    city : '北京'
+                },
+                {
+                    id : 2,
+                    city : '上海'
+                },
+                {
+                    id : 3,
+                    city : '深圳'
+                },
+            ],
+            object : {
+                name : 'Mr.Lee',
+                age : 100,
+                gender : '男',
+            }
+        };
+
+    
+        // 创建一个Vue对象
+        const app = new Vue({
+            // el固定属性，挂载指定元素
+            // id #   class .
+            el : '#app',
+            // data 固定属性，定义数据
+            // 数据中的属性名和模板变量名一致
+            data :dataObj,
+            
+            // 计算属性，固定名称
+            computed : {
+               
+            },
+
+            // 方法
+            methods : {
+                add() {
+                    this.array.unshift({id:4, city:'重庆'});
+                }
+            },
+        });
+
+        // 第一种
+        // app.array.push({city:'重庆'});
+        // 无法即时响应
+        // app.array[1] = {city:'重庆'};
+        // app.array.length=1
+        // 第一种
+        // Vue.set(app.array, 1 , {city:'重庆'});
+        //app.array.splice(1, 1, {city:'重庆'});
+        //app.array.splice(1);
+    </script>
+</body>
+</html>
