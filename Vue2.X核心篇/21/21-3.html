@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域插槽</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- 很绕，学完立刻编码加深印象 -->
+
+    <div id="app">
+       
+        
+        <html-a v-bind:text="message" v-slot="slotProps"> 
+            {{ message }} 
+            {{ slotProps.obj.id }}    
+        </html-a>
+
+
+
+    </div>
+
+    <template id="html-a">
+        <div>
+            <span>{{ text }}</span>
+            <slot v-bind:obj="obj">{{ obj.name }}</slot>
+        </div>
+    </template>
+
+    <script>
+        // 去掉警告
+        Vue.config.productionTip = false
+
+
+        // 创建一个Vue对象
+        // 父组件
+        const app = new Vue({
+            // el固定属性，挂载指定元素
+            // id #   class .
+            el: '#app',
+            // data 固定属性，定义数据
+            // 数据中的属性名和模板变量名一致
+            data: {
+                message : 'Hello, Vue!'
+            },
+            components: {
+                'html-a': {
+                    data() {
+                        return {
+                            obj  : {
+                                id : 1001,
+                                name : 'Mr.Lee',
+                                gender : '男',
+                            }
+                        }
+                    },
+                    template: '#html-a',
+                    props : ['text'],
+                }
+
+            },
+
+            // 计算属性，固定名称
+            computed: {
+
+            },
+
+            // 方法
+            methods: {
+               
+            },
+        });
+    </script>
+</body>
+
+</html>

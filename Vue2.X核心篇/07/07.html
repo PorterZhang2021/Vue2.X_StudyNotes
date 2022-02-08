@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环列表渲染</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+
+    <div id="app">
+        <!-- <ul>
+            <li v-for="item in array">{{ item.city }}</li>
+        </ul> -->
+        <!-- <ul>
+            <li v-for="(item,index) in array">{{ index }}.{{ item.city }}</li>
+            <li v-for="(item,index) of array">{{ index }}.{{ item.city }}</li>
+
+        </ul> -->
+        <!-- <ul>
+            <li v-for="(value,name,key) in object">{{ key }}.{{ name }}.{{ value }}</li>
+        </ul> -->
+        <!-- <ul>
+            <template  v-for="item in array">
+                <li>{{ item.city }}</li>
+                <li>-----</li>
+            </template>
+        </ul> -->
+        <!-- <div v-for="n in 10">{{n}}</div> -->
+        <!-- <ul>
+            <li v-for="item in array" v-if="flag">{{ item.city }}</li>
+        </ul> -->
+        <!-- <ul>
+            <template v-if="flag">
+                <li v-for="item in array">{{ item.city }}</li>
+            </template>
+        </ul> -->
+
+        <!-- <ul>
+            <li v-for="item in array" v-if="item.city != '上海'">{{ item.city }}</li>
+        </ul> -->
+        
+        <ul>
+            <li v-for="item in arrayCity" >{{ item.city }}</li>
+        </ul>
+    </div>
+
+    
+    <script>
+
+
+        // 去掉警告
+        Vue.config.productionTip = false
+
+        // 数据对象
+        const dataObj = {
+            message : 'Hello, Vue!',
+            flag:false,
+            array : [
+                {
+                    city : '北京'
+                },
+                {
+                    city : '上海'
+                },
+                {
+                    city : '深圳'
+                },
+            ],
+            object : {
+                name : 'Mr.Lee',
+                age : 100,
+                gender : '男',
+            }
+        };
+
+    
+        // 创建一个Vue对象
+        const app = new Vue({
+            // el固定属性，挂载指定元素
+            // id #   class .
+            el : '#app',
+            // data 固定属性，定义数据
+            // 数据中的属性名和模板变量名一致
+            data :dataObj,
+            
+            // 计算属性，固定名称
+            computed : {
+                arrayCity() {
+                    this.array.splice(1,1);
+                    return this.array;
+                }
+            },
+
+            // 方法
+            methods : {
+    
+            },
+        });
+    </script>
+</body>
+</html>

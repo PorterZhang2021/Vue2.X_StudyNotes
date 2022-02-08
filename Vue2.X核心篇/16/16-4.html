@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件的单向数据流</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- 有点绕，学完立刻编码加深印象 -->
+
+    <div id="app">
+
+        <html-a v-bind:count="count"></html-a>
+
+    </div>
+
+
+    <script>
+        // 去掉警告
+        Vue.config.productionTip = false
+
+
+        // 创建一个Vue对象
+        // 父组件
+        const app = new Vue({
+            // el固定属性，挂载指定元素
+            // id #   class .
+            el: '#app',
+            // data 固定属性，定义数据
+            // 数据中的属性名和模板变量名一致
+            data: {
+                count: 5,
+            },
+            components: {
+                'html-a': {
+                    data() {
+                        return {
+                            message: '子组件',
+                            childCount: this.count,
+                        }
+                    },
+                    template: `
+                        <div>
+                            <button v-on:click="clickChildCount">{{ changedChildcount }}</button>
+                        </div>
+                    `,
+                    props: ['count'],
+                    computed: {
+                        changedChildcount() {
+                            return this.childCount
+                        }
+                    },
+                    methods : {
+                        clickChildCount(){
+                            this.childCount++
+                        }
+                    }
+                }
+
+            },
+
+            // 计算属性，固定名称
+            computed: {
+
+            },
+
+            // 方法
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+
+</html>
