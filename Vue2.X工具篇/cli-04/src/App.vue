@@ -14,6 +14,18 @@
   </div>
 </template>
 
+<script>
+export default  {
+  watch : {
+    $route(to, from){
+      console.log(to);
+      console.log(from);
+    }
+  }
+}
+</script>
+
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
