@@ -18,10 +18,16 @@
       <button @click="go(1)">goDown</button>
       <button @click="goList">goList</button>
       <button @click="goUser(5)">goUser/5</button>
-<!--      <button @click="goUser2(6)">goUser2/6</button>-->
+      <button @click="goUser2(6)">goUser2/6</button>
+
+      <br><br>
+      <router-link v-bind:to="{name:'User', params : { id : 5 }}">user 5</router-link> |
+      <router-link v-bind:to="{path:'/user', query : { id : 6 }}">user 6</router-link> |
 
     </div>
+    <router-view name="sidebar"></router-view>
     <router-view/>
+    <router-view name="footer"></router-view>
   </div>
 </template>
 
@@ -57,14 +63,14 @@ export default  {
     },
 
     // 第二种传参的方法 使用path
-    // goUser2(id){
-    //   this.$router.push({
-    //     path: '/user',
-    //     query : {
-    //       id
-    //     },
-    //   })
-    // }
+    goUser2(id){
+      this.$router.push({
+        path: '/user',
+        query : {
+          id
+        },
+      })
+    },
 
     go(step) {
       this.$router.go(step);

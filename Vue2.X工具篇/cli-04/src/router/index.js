@@ -8,6 +8,8 @@ import List from "@/views/List";
 import User from "@/views/User";
 import UserProfile from "@/views/user/UserProfile";
 import UserPosts from "@/views/user/UserPosts";
+import Sidebar from "@/views/Sidebar";
+import Footer from "@/views/Footer";
 
 // 可以参考API的解释，参数是一个插件，路由就是一个插件
 // 这句话的意思是：初始化这个插件以便使用
@@ -18,12 +20,20 @@ const routes = [
   {
     path: '/',  // 链接地址
     name: 'Home', // 别名
-    component: Home // 加载的组件
+    components: {
+      default : Home,
+      sidebar : Sidebar,
+      footer : Footer,
+    } // 加载的组件
   },
   {
     path: '/list',  // 链接地址
     name: 'List', // 别名
-    component: List // 加载的组件
+    components: {
+      default : List,
+      sidebar : Sidebar,
+      footer : Footer,
+    }
   },
   {
     path: '*',  // 链接地址
@@ -35,11 +45,11 @@ const routes = [
     name: 'List', // 别名
     component: List // 加载的组件
   },
-  // {
-  //   ptah : '/user',
-  //   name : 'User',
-  //   component: User,
-  // },
+  {
+    path: '/user',  // 链接地址
+    name: 'User', // 别名
+    component: User // 加载的组件
+  },
   {
     path: '/user/:id',  // 链接地址
     name: 'User', // 别名
@@ -66,7 +76,12 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    components: {
+      default : () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+      sidebar : Sidebar,
+      footer : Footer,
+    } // 加载的组件
   }
 ]
 
