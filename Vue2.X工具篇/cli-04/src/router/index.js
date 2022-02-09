@@ -29,26 +29,53 @@ const routes = [
   {
     path: '/list',  // 链接地址
     name: 'List', // 别名
+    alias: '/liebiao',
     components: {
       default : List,
       sidebar : Sidebar,
       footer : Footer,
     }
   },
-  {
-    path: '*',  // 链接地址
-    name: 'Home', // 别名
-    component: Home // 加载的组件
-  },
-  {
-    path: '/user-*',  // 链接地址
-    name: 'List', // 别名
-    component: List // 加载的组件
-  },
+  // {
+  //   path: '*',  // 链接地址
+  //   name: 'Home', // 别名
+  //   component: Home // 加载的组件
+  // },
+  // {
+  //   path: '/user-*',  // 链接地址
+  //   name: 'List', // 别名
+  //   component: List // 加载的组件
+  // },
   {
     path: '/user',  // 链接地址
     name: 'User', // 别名
     component: User // 加载的组件
+  },
+  {
+    path: '/a',  // 链接地址
+    // redirect : '/list'
+    // 对象的方式
+    // redirect : {
+    //   name : 'List',
+    // },
+    // 动态跳转路径 闭包 箭头函数
+    // redirect : () => {
+    //   if(true){
+    //     // return '/list'
+    //     return {
+    //       name : 'List',
+    //     }
+    //   }
+    // }
+    // 传参
+    redirect : to => {
+      if (true) {
+        console.log(to);
+        return {
+          name : 'List',
+        };
+      }
+    }
   },
   {
     path: '/user/:id',  // 链接地址
