@@ -6,11 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>定义选项对象</title>
     <script src="../js/vue.js"></script>
+    <!-- 
+        框架理解
+        所有的前端框架基本都是为了简化：模板渲染、事件绑定和用户交互问题
+        vue参考了MVVM模型 视图-View 视图模型-ViewModel 模型-Model
+        当我们new Vue() 创建一个实例时，括号内传递的时一个选项对象
+        这个选项一般包含：数据、模板、挂在元素、方法、生命周期钩子等等
+        vue实例创建时，options对象属性都会被添加到vue响应式系统中
+        响应式系统，就是可以通过更改这些属性的值，让视图执行更新渲染
+     -->
 </head>
 <body>
 
+    <!-- 模板是视图中{{ message }} 这样的存在，通过el属性挂载绑定指定元素 -->
+    <!-- 渲染 id = "app" 中的模板 -->
     <div id="app">
         {{ message }}
+        <!-- v-on:click 是一个事件 其 "" 内 为方法名称，要与挂载方法相对应 -->
         <button v-on:click="alert">点击</button>
     </div>
 
@@ -29,23 +41,33 @@
 
         // 创建一个Vue对象
         const app = new Vue({
+            // 在options对象中，最为常用的就是模板、数据、方法以及挂载元素
             // el固定属性，挂载指定元素
-            // id #   class .
+            // id 使用 #   class 使用 . 挂载指定元素
             el : '#app',
+
+            // 数据定义，使用data属性实现，它的值以对象形式存在
             // data 固定属性，定义数据
             // 数据中的属性名和模板变量名一致
             data :dataObj,
             
             // 方法
+            // 方法的执行，需要通过methods属性来定义方法，并使用指令执行
+            // methods固定属性，执行方法
             methods : {
                 alert:function(){
                     alert('点击');
                 }
             },
             // 生命周期
+            // 当我们创建vue实例时，框架会执行一系列操作，监听，编译，挂载等
+            // 这个过程通常会执行一些生命周期钩子的函数，用于进行某个阶段的出啊发
+            // created固定方法，生命周期钩子
+            // 方法在初始化后自动执行
             created : function(){
                 console.log('初始化后:' + this.message);
             },
+            // 修改并更新渲染后执行的钩子
             updated : function(){
                 console.log('修改后:' + this.message);
             },
