@@ -13,6 +13,9 @@
       <router-link to="/user/5/profile">5号档案</router-link> |
       <router-link to="/user/5/posts">5号岗位</router-link>
 
+      <br>
+      <button @click="goList">goList</button>
+
     </div>
     <router-view/>
   </div>
@@ -20,10 +23,29 @@
 
 <script>
 export default  {
+  methods : {
+    // 第一种方法
+    // goList() {
+    //   this.$router.push('/list');
+    // }
+
+    // 第二种方法 键值对 name传参
+    // goList() {
+    //   this.$router.push({
+    //     name : 'List',
+    //   })
+
+    // 第三种方法 键值对 path传参
+    goList(){
+      this.$router.push({
+        path : '/list',
+      })
+    }
+  },
   watch : {
     $route(to, from){
-      console.log(to);
-      console.log(from);
+      // console.log(to);
+      // console.log(from);
     }
   }
 }
