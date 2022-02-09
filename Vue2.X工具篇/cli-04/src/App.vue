@@ -14,7 +14,11 @@
       <router-link to="/user/5/posts">5号岗位</router-link>
 
       <br>
+      <button @click="go(-1)">goUp</button>
+      <button @click="go(1)">goDown</button>
       <button @click="goList">goList</button>
+      <button @click="goUser(5)">goUser/5</button>
+<!--      <button @click="goUser2(6)">goUser2/6</button>-->
 
     </div>
     <router-view/>
@@ -40,6 +44,30 @@ export default  {
       this.$router.push({
         path : '/list',
       })
+    },
+
+    // 第一种传参的方法 使用name 和 params配套
+    goUser(id){
+      this.$router.push({
+        name : 'User',
+        params : {
+          id
+        }
+      })
+    },
+
+    // 第二种传参的方法 使用path
+    // goUser2(id){
+    //   this.$router.push({
+    //     path: '/user',
+    //     query : {
+    //       id
+    //     },
+    //   })
+    // }
+
+    go(step) {
+      this.$router.go(step);
     }
   },
   watch : {
