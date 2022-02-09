@@ -29,6 +29,11 @@ const routes = [
     component: Home // 加载的组件
   },
   {
+    path: '/user-*',  // 链接地址
+    name: 'List', // 别名
+    component: List // 加载的组件
+  },
+  {
     path: '/user/:id',  // 链接地址
     name: 'User', // 别名
     component: User // 加载的组件
