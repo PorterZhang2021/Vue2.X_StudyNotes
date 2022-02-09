@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 // 引入Home组件
 import Home from '../views/Home.vue'
 import List from "@/views/List";
+import User from "@/views/User";
 
 // 可以参考API的解释，参数是一个插件，路由就是一个插件
 // 这句话的意思是：初始化这个插件以便使用
@@ -21,6 +22,11 @@ const routes = [
     path: '/list',  // 链接地址
     name: 'List', // 别名
     component: List // 加载的组件
+  },
+  {
+    path: '/user',  // 链接地址
+    name: 'User', // 别名
+    component: User // 加载的组件
   },
   {
     path: '/about',
