@@ -7,7 +7,11 @@
 
       <br>
       <router-link to="/user/5">user 5</router-link> |
-      <router-link to="/user/6">user 6</router-link> |
+      <router-link to="/user/6">user 6</router-link>
+
+      <br>
+      <router-link to="/user/5/profile">5号档案</router-link> |
+      <router-link to="/user/5/posts">5号岗位</router-link>
 
     </div>
     <router-view/>
