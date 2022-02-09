@@ -1,5 +1,5 @@
 <template>
-  <h3>User Id : {{$route.query.id}}</h3>
+  <h3>User Id : {{$route.params.id}}</h3>
 </template>
 
 <script>
