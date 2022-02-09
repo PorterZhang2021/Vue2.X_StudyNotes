@@ -4,6 +4,11 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/list">List</router-link> |
       <router-link to="/about">About</router-link>
+
+      <br>
+      <router-link to="/user/5">user 5</router-link> |
+      <router-link to="/user/6">user 6</router-link> |
+
     </div>
     <router-view/>
   </div>

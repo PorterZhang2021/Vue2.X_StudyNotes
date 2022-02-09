@@ -41,7 +41,7 @@ const routes = [
 
 // 实例化路由组件
 const router = new VueRouter({
-  // mode : 'history',  // 默认mode : 'hash'
+  mode : 'history',  // 默认mode : 'hash'
   routes
 })
 
