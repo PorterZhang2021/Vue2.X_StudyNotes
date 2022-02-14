@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Parent</h1>
-     <child v-bind:msg="'from Parent msg'" @showMsg="showMsg" ref="child"></child>
+     <child v-bind:msg="'from Parent msg'" @showMsg="showMsg" ref="child" v-bind="$attrs"></child>
     <h3>{{msg}}</h3>
   </div>
 </template>
