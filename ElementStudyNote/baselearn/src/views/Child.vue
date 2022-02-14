@@ -15,6 +15,11 @@ export default {
       default: '',
     }
   },
+  data () {
+    return {
+      childMsg:'childMsg',
+    }
+  },
   methods: {
     passMsg() {
       this.$emit('showMsg', 'I am from Child');

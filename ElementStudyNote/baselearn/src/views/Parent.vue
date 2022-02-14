@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Parent</h1>
-    <child v-bind:msg="'from Parent msg'" @showMsg="showMsg"></child>
+     <child v-bind:msg="'from Parent msg'" @showMsg="showMsg" ref="child"></child>
     <h3>{{msg}}</h3>
   </div>
 </template>
@@ -22,6 +22,10 @@ export default {
     showMsg(val){
       this.msg = val;
     }
+  },
+  mounted() {
+    console.log(this.$children[0]);
+    console.log('ref',this.$refs.child);
   }
 }
 </script>
