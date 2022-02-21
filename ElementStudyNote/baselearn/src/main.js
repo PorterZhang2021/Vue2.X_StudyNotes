@@ -5,6 +5,12 @@ import store from './store'
 
 Vue.config.productionTip = false
 
+// 导航守卫
+router.beforeEach((to, from, next)=> {
+  console.log(to.path);
+  next();
+})
+
 new Vue({
   router,
   store,
