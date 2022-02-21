@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    this is app
+<!--    this is app-->
     <!--    <button @click="passMsg">传你</button>-->
     <!--    <parent :msg="a" :msgb="b" :msgc="c"></parent>-->
     <!--  router-link 跳转  -->
-    <router-link to="/home">home</router-link>
-    <button @click="toHome">home</button>
+<!--    <router-link to="/home">home</router-link>-->
+<!--    <button @click="toHome">home</button>-->
     <router-view/>
   </div>
 </template>

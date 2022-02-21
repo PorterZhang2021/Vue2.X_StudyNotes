@@ -8,7 +8,7 @@ const routes = [
   {
     path:'/',
     component: () => import('@/views/Parent.vue'),
-    redirect: '/layout',
+    redirect: '/pop',
   },
   {
     // 动态路由
@@ -20,9 +20,14 @@ const routes = [
       path: '/child',
       component: () => import('@/views/Child'),
     }],
-  },{
+  },
+  {
     path: '/layout',
     component: () => import('@/views/element/Layout'),
+  },
+  {
+    path: '/pop',
+    component: () => import('@/views/element/Pop'),
   },
 ]
 
