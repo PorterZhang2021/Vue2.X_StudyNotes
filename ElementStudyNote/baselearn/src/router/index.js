@@ -8,7 +8,7 @@ const routes = [
   {
     path:'/',
     component: () => import('@/views/Parent.vue'),
-    redirect: '/table',
+    redirect: '/form',
   },
   {
     // 动态路由
@@ -32,6 +32,10 @@ const routes = [
   {
     path: '/table',
     component: () => import('@/views/element/Table')
+  },
+  {
+    path: '/form',
+    component: () => import('@/views/element/Form')
   },
 ]
 
