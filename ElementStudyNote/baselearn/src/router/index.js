@@ -6,6 +6,10 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path:'/',
+    component: () => import('@/views/Parent.vue'),
+  },
+  {
     // 动态路由
     path: '/home/:id',
     // path: '/home',
